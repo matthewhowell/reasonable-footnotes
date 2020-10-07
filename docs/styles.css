@@ -1,0 +1,556 @@
+/*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}[hidden],template{display:none}
+/*! reasonable.css v0.0.1 | MIT License | https://github.com/matthewhowell/reasonable.css */:root{--color-gray:#2d2c30;--color-light-gray:#888;--color-lightest-gray:#ccc;--color-lightest-gray:#eee;--color-white:#fff;--color-link:#4aa;--color-highlight:rgba(137,123,175,.125);--color-highlight-light:rgba(137,123,175,.0625);--color-purple-lightest:rgba(129,128,178,.5);--color-purple-light:#8180b2;--color-purple-medium:#353276;--color-purple-dark:#0a093b;--color-green-light:#77b395;--color-green-medium:#28774f;--color-green-dark:#003c1d;--color-lighter:#f6f8fe;--color-light:#b8d0ff;--color-medium:#5d88ef;--color-dark:#0d52f2;--color-darker:#0f3a8a;--gradient:linear-gradient(90deg,rgba(138,104,232,.5),rgba(93,136,239,.5) 50%,rgba(22,162,110,.5));--color-link:var(--color-dark);--color-link-visited:var(--color-dark);--color-link-hover:var(--color-dark);--color-decoration:var(--color-light);--color-background:var(--color-background-light);--color-neutral:var(--color-lighter);--color-selection:var(--color-light);--color-text:var(--color-text-light);--font-stack-sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Oxygen,Ubuntu,Cantarell,"Open Sans","Helvetica Neue",sans-serif;--font-stack-serif:Georgia,Cambria,"Times New Roman",Times,serif;--font-stack-mono:SFMono-Regular,Menlo,Consolas,"Liberation Mono","Courier New",monospace}html{font-size:100%}@media (max-width:480px){html{font-size:87.5%}}@media (max-width:320px){html{font-size:75%}}body{width:100%;max-width:100%;min-width:20rem;margin:0 auto;padding:0;line-height:1.5;font-family:var(--font-stack-serif);font-size:1.25rem;background-color:var(--color-background);color:var(--color-text)}h1,h2,h3,h4,h5,h6{font-family:var(--font-stack-sans);line-height:1.25;margin-top:0;margin-bottom:1rem}h1{font-size:3rem}h2{font-size:2rem}h3{font-size:1.5rem}h4,h5,h6{font-size:1.25rem}a,a:active{color:var(--color-link)}a:visited{color:var(--color-link-visited)}a:hover{background-color:var(--color-lighter)}a:focus,a:hover{color:var(--color-link-hover);text-decoration:none}a:focus{border:2px dotted var(--color-link-hover);padding:1px 2px}nav{font-family:var(--font-stack-sans)}nav a{margin-right:1rem;display:inline-block}nav a:last-child{margin-right:0}aside,p{margin:0 0 1rem;word-wrap:break-word}p:last-child{margin-bottom:0}hr{border:none;color:var(--color-highlight);background-color:var(--color-highlight);height:2px;margin:0 0 1rem}mark{background-color:var(--color-selection);padding:2px 4px}code,kbd,pre{font-family:var(--font-stack-mono);font-size:.875rem;background:var(--color-lighter);padding:.125rem .5rem;border-radius:.25rem}kbd{border:1px solid var(--color-lightest);border-width:1px 1px 2px}pre{max-width:100%;overflow:auto;margin-bottom:1rem}blockquote{padding:1rem;margin:0 1rem 1rem;background:var(--color-neutral);border-left:4px solid var(--color-highlight)}blockquote p:last-child{padding-bottom:0;margin-bottom:0}abbr[title]{cursor:help;border-bottom:1px dotted var(--color-light-gray);text-decoration:none}small,sub,sup{font-size:.75rem}figure{margin:0 0 1rem;text-align:center}figcaption{margin:0;padding:1rem;text-align:center;color:var(--color-light-gray)}table>caption{background-color:var(--color-white);color:var(--color-darker);font-size:.875rem;font-weight:700;padding:.25rem 1rem;text-align:left}img{margin:0 auto 1rem;height:auto;max-width:100%}figure img{margin:0 auto}figure audio,figure video{width:100%}ol,ul{margin:0 0 1rem}dl,ol ol,ol ul,ul ol,ul ul{margin:0}dl{display:grid;grid-template-columns:max-content auto}dl dt{font-weight:700}details{margin:0 0 1rem;padding:0 0 0 1rem;border-left:1px solid var(--color-lightest-gray)}details>summary{cursor:pointer;display:inline-block;border:1px solid var(--color-lightest-gray);border-radius:4px;padding:.125rem 1rem;margin:0}details[open],details[open]>summary{border-color:var(--color-light-gray)}details[open]>summary{margin:0 0 1rem}select{width:auto;margin:0 .5rem 0 0;font-size:1rem}button,input[type=button],input[type=submit],select{display:inline-block;font-family:var(--font-stack-sans)}button,input[type=button],input[type=submit]{cursor:pointer;border:1px solid var(--color-light-gray);background:none;border-radius:4px;padding:.25rem 1rem;margin:0;font-size:.75rem;text-transform:uppercase;font-weight:700}input:focus{box-shadow:0 0 .125rem .25rem rgba(0,0,0,.125)}input[type=email]:focus,input[type=password]:focus,input[type=text]:focus{outline:2px solid var(--color-highlight);border:2px solid var(--color-medium)}button:active,input[type=button]:active,input[type=submit]:active{border:1px solid var(--color-gray);color:var(--color-medium)}em>em{font-weight:700}meter{vertical-align:middle}table{font-family:var(--font-stack-sans);font-size:1rem;border:1px solid var(--color-light);border-radius:2px;border-spacing:0;display:inline-block;max-width:100%;overflow-x:auto;padding:0;white-space:nowrap;margin-bottom:2rem}table th{background-color:var(--color-lighter);border-bottom:2px solid var(--color-medium)}tbody{display:table-row-group;vertical-align:middle;border-top-color:inherit;border-right-color:inherit;border-bottom-color:inherit;border-left-color:inherit}table td,table th,table tr{text-align:left;padding:.5rem 1rem}table tr:nth-child(2n){background-color:var(--color-lighter)}table tr:nth-child(odd){background-color:var(--color-white)}del{color:var(--color-light-gray)}ins{text-decoration:none}ins:before{content:"+";margin:0 1rem 0 0;color:var(--color-light-gray)}ins>p{display:inline-block}fieldset,form{border:none;margin:0}ruby{display:inline-flex;flex-direction:column-reverse}rb,rt{display:inline;line-height:1}label,legend{font-family:var(--font-stack-sans);font-size:.875rem;font-weight:700;text-transform:uppercase}legend{padding:0 0 0 .25rem}label{display:inline-block;margin:0 1rem 0 0;padding:.5rem 0;width:auto;vertical-align:middle}fieldset li,fieldset ol{list-style:none;padding:0;margin:0}fieldset{padding:0 0 .5rem 1rem;margin:0 0 1rem;border:1px solid var(--color-lightest-gray);border-radius:4px}fieldset fieldset{margin:0 1rem 1rem 0}output{font-family:var(--font-stack-mono);background:var(--color-highlight);padding:.125rem;border-radius:.25rem}input,textarea{display:inline-block;border:2px solid var(--color-light-gray);border-radius:4px;background-color:var(--color-white);font-size:1rem;padding:.25rem .5rem;margin:0}input[type=checkbox],input[type=radio]{display:inline-block;vertical-align:middle;margin-right:.5rem}iframe{border:2px solid #666;margin:0 0 1rem;padding:0}
+
+/*! A Reasonable Website v0.0.2 | MIT License | https://github.com/matthewhowell/reasonable-website */
+:root {
+	--gradient-reasonable: linear-gradient(90deg, rgba(245,71,94,.5) 0%, rgba(238,109,58,.5) 16%, rgba(255,243,82,.5) 32%, rgba(22,162,110,.5) 48%, rgba(93,136,239,.5) 64%, rgba(138,104,232,.5) 80%, rgba(225,71,199,.5) 100%);
+}
+
+/* the html body element */
+body {
+
+	/* a bottom border for the site */
+	/* uses the decoration shade in the palette */
+	border-bottom: .25rem solid var(--color-decoration);
+
+}
+
+/* the four primary HTML elements used to denote content sections */
+/* each will handle its own layout */
+/* each can be wrapped in a <div class="full-width"></div> to apply a background color */
+article,
+footer,
+header,
+section {
+
+	/* use border box to make the math more obvious */
+	box-sizing: border-box;
+
+	/* 608px single column */
+	/* aiming to get a reasonable number (60) of characters per line */
+	max-width: 42rem;
+	
+	/* 320px minimum width */
+	/* minimum width for readable text */
+	/* this nicely supports older, narrower mobile devices */
+	min-width: 20rem;
+	
+	/* 32px margins on the bottom, centered horzontally */
+	margin: 0 auto 2rem auto;
+	
+	/* 32px padding on the sides */
+	padding: 0 2rem;
+
+}
+
+	/* target narrow screens and windows */
+	@media (max-width: 480px) {
+		article,
+		footer,
+		header,
+		section {
+			/* smaller padding on the sides */
+			padding: 0 1.5rem;
+		}
+	}
+
+/* used for a <div> that wraps article, footer, header, or section */
+/* allows a full width background color to be applied */
+.full-width {
+
+	/* full with, only use within full width elements */
+	width: 100%;
+
+	/* allow full width */
+	max-width: none;
+
+	/* bottom margin and center horizontally */
+	margin: 0 auto 2rem auto;
+
+	/* vertical padding, anticipating a background color */
+	padding: 2rem 0rem;
+}
+
+/* target the four content sectioning elements */
+/* when wrapped in a .full-width <div> */
+.full-width > article,
+.full-width > footer,
+.full-width > header,
+.full-width > section {
+
+	/* remove the bottom margin */
+	/* this space will be replicated by the vertical padding in the parent .full-width element */
+	margin-bottom: 0;
+
+}
+
+/* article element specifics */
+article {
+
+	/* remove article padding */
+	padding: 0;
+
+	/* remove article max width to allow full color backgrounds */
+	max-width: none;
+
+}
+
+/* decorative header bar at the very top of the site */
+.fixed-header {
+
+	/* fixed position at the top of the window */
+	position: fixed;
+
+	/* 0px off the top */
+	top: 0px;
+
+	/* 0px off the left */
+	left: 0px;
+
+	/* no background */
+	/* will use an additional class to apply a color or gradient */
+	background: transparent;
+
+	/* remove padding */
+	padding: 0;
+
+	/* remove margin */
+	margin: 0;
+
+	z-index: 1;
+}
+
+.bg-gradient {
+
+	/* background gradient from the site palette */
+	background: var(--gradient);
+
+	/* 4px height */
+	height: .25rem;
+}
+
+/* utility classes for adding bottom margins */
+.mb-0 { margin-bottom: 0rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 2rem; }
+.mb-3 { margin-bottom: 3rem; }
+.mb-4 { margin-bottom: 4rem; }
+
+
+/* site header */
+main > header  {
+
+	/* add top padding */
+	padding-top: 4rem;
+
+	/* add bottom margin */
+	margin-bottom: 6rem;
+}
+
+/* the site footer, different than article or section footer */
+main footer {
+
+	/* smaller font size for the site footer */
+	font-size: 1rem;
+	
+	/* more vertical padding on the site footer */	
+	padding: 1rem 2rem 2rem 2rem;
+
+}
+
+
+/* article footers, section footers */
+/* not the site footer */
+article footer, section footer {
+	font-size: 1rem;
+
+	/* 32px padding on the sides */
+	padding: 0 2rem;
+}
+
+.neutral {
+	background-color: var(--color-neutral);
+}
+
+/* footnotes description list term elements */
+.footnotes dl dt {
+
+	/* remove bold font for footnote numbers */
+	font-weight: normal;
+
+}
+
+/* footnotes definition list definition elements */
+.footnotes dl dd {
+
+	/* 16px margin to separate from the <dt> elements */
+	margin-left: 1rem;
+
+}
+
+/* sup element links used as inline footnotes links */
+sup > a {
+
+	/* add vertical and horizontal padding */
+	padding: 1px 4px;
+
+	/* add background color */
+	background-color: var(--color-lighter);
+
+}
+
+/* unordered list element */
+ul {
+
+	/* remove list style */
+	list-style: none;
+
+}
+
+/* :before list item, used to style bullet */
+li:before {
+
+	/* add bullet character */
+	content: '●';
+
+	/* use decoration color */
+	color: var(--color-decoration);
+
+	/* use inline block for easier layout control */
+	display: inline-block;
+
+	/* explicit width of 20px */
+	width: 1.25rem;
+
+	/* negative margin to pull back */
+	margin-left: -1.25rem;
+}
+
+ul.no-bullet {
+	padding-left: 1rem;
+}
+
+ul.no-bullet > li:before {
+	content: '';
+	width: 0;
+	margin-left: 0;
+}
+
+/* selected text */
+::selection {
+
+	/* use selection background color from palette */
+	background-color: var(--color-selection); 
+}
+
+/* selected text */
+/* browser: firefox */
+::-moz-selection {
+
+	/* use selection background color from palette */
+	background-color: var(--color-selection); 
+}
+
+mark::selection, mark *::selection {
+	background-color: var(--color-medium);
+}
+
+/* selected text */
+/* browser: firefox */
+mark::-moz-selection, mark *::-moz-selection {
+
+	/* use selection background color from palette */
+	background-color: var(--color-medium); 
+}
+
+/* heading elements */
+h1, h2, h3, h4, h5, h6 {
+
+	/* underline headings */
+	text-decoration: underline;
+
+	/* decoration color from the palette */
+	text-decoration-color: var(--color-decoration);
+
+}
+
+/* form buttons */
+button, input[type=submit], input[type=button] {
+
+	/* background light color from the palette */
+	background-color: var(--color-medium);
+
+	/* */
+	color: var(--color-lighter);
+
+	/* remove default button border */
+	border: none;
+	
+}
+
+button:hover, input[type=submit]:hover, input[type=button]:hover {
+
+	/* dark background color from the palette */
+	background-color: var(--color-dark);
+
+}
+
+/* decorative gradient for the colors section */
+.gradient-color {
+
+	/* increase hr height to 16px */
+	height: .5rem;
+
+	/* use the reasonable gradient, from reasonable colors */
+	background: var(--gradient-reasonable);
+
+}
+
+/* decorative gradient for the colors section */
+.large {
+
+	/* increase hr height to 16px */
+	height: .125rem;
+
+	/* use the reasonable gradient, from reasonable colors */
+	background: var(--gradient);
+
+	margin: 0 0 3rem 0;
+
+}
+
+/* a flexbox container for headings with icons */
+.flex-heading {
+
+	/* use flexbox to allow icon and heading on the same line */
+	display: flex;
+
+	/* add a bottom margin to the container */
+	margin-bottom: 1rem;
+
+}
+
+	/* adjustments for h4 headings within the flexbox container */
+	.flex-heading h4 {
+
+		/* remove the margin */
+		margin: 0;
+
+		/* adjust the line height */
+		line-height: 1.5rem;
+
+		/* reorder h4 to appear after the icon */
+		/* the h4 comes first in the markup for accessiblity reasons */
+		order: 1;
+	}
+
+	/* adjustments for icons within the flexbox container */
+	.flex-heading .icon {
+
+		/* height should match the line height of the heading */
+		height: 1.5rem;
+
+		/* put 16px space between the icon and the heading */
+		margin-right: 1rem;
+
+		/* this is an svg element */
+		/* adjust the stroke color to match the palette */
+		stroke: var(--color-medium);
+
+		/* reorder h4 to appear after the icon */
+		/* the h4 comes first in the markup for accessiblity reasons */
+		order: 0;
+	}
+
+	/* used to adjust color for solid fill shapes */
+	.flex-heading .icon-fill {
+
+		/* safari fix to ensure the stroke/fill color if properly applied */
+		fill: var(--color-medium);
+
+	}
+
+	/* used to override svg color */
+	.flex-heading .icon-color {
+
+		/* adjust the stroke color to match the palette */
+		color: var(--color-medium);
+
+	}
+
+
+/* ? */
+/* nested lists */
+li > ul, li > ol {
+
+	/* remove top padding from nested lists */
+	padding-top: 0;
+	
+}
+
+/* the nav element */
+nav {
+
+	/* 16px font size for the nav */
+	font-size: 1rem;
+	
+}
+
+/* links inside the nav element */
+nav a {
+
+	/* ensure nice vertical spacing if the nav links spill onto a second line */
+	/* helps with smaller width screens */
+	margin-bottom: .5rem;
+
+}
+
+/* container for version number badge */
+.version {
+
+	/* fixed position at the top of the window */
+	position: absolute;
+
+	/* 0px off the top */
+	top: 1rem;
+
+	/* add horizontal padding */
+	padding: 0 1rem;
+
+	/* smaller font size */
+	font-size: .875rem;
+
+	/* to match the other layout elments */
+	box-sizing: border-box;
+
+	/* move badge to the right edge of the screen */
+	text-align: right;
+
+	/* badge should be under any fixed elements */
+	z-index: 0;
+}
+
+/* the version number badge */
+.version code {
+
+	/* add neutral background color */
+	background-color: var(--color-neutral);
+
+}
+
+/* for a button-style link */
+/* a single <span> element within in the <a> */
+a.button {
+
+	/* inline block for easier margins */
+	display: inline-block;
+
+	/* sans serif font for buttons */
+	font-family: var(--font-stack-sans);
+
+	/* white button background to ensure contrast */
+	background-color: var(--color-white);
+	
+	/* rounded butten corners */
+	/* border-radius: 4px; */
+
+	/* clear border */
+	border: 2px solid var(--color-medium);
+
+	/* a button-like border */
+	border-width: 1px 4px 4px 1px;
+
+	/* more padding */
+	padding: .5rem 1rem;
+
+	/* smaller font size for buttons */
+	font-size: .875rem;
+
+	/* bold font for buttons */
+	font-weight: bold;
+
+	/* no underline for button text */
+	text-decoration: none;
+}
+
+/* a span hover and focus state */
+a.button:hover, a.button:focus {
+
+	/* background color */
+	background-color: var(--color-lighter);
+
+}
+
+/* a span active state */
+a.button:active {
+
+	/* adjust border for a "click" when the button is active */
+	border-width: 2px 1px 1px 2px;
+
+}
+
+/* a download button */
+a.download::before {
+
+	/* a down arrow before */
+	content: "↓";
+	
+	/* define explicit width */
+	width: 1.25rem;
+
+	/* space between the arrow and the button text */
+	margin-right: 1rem;
+
+}
+
+/* a download button */
+a.jump::before {
+
+	/* a down arrow before */
+	content: "#";
+	
+	/* define explicit width */
+	width: 1.25rem;
+
+	/* space between the arrow and the button text */
+	margin-right: 1rem;
+
+}
+
+/* table cell with mono class */
+td.mono {
+
+	/* fixed width font stack */
+	font-family: var(--font-stack-mono);
+
+}
+
+td.result {
+	font-family: var(--font-stack-mono);
+}
+
+td.pass {
+	color: green;
+	font-size: .875;
+}
+
+.quick {
+	color: var(--color-dark);
+	font-family: var(--font-stack-mono);
+	text-transform: uppercase;
+	font-size: 1rem;
+	letter-spacing: 1px;
+	font-weight: bold;
+}
+
+.left-sawtooth {
+	background-image: url('../images/left-sawtooth.svg');
+	background-repeat: repeat-y;
+	background-size: 1rem 1rem;
+}
+
+.left-wave {
+	background-image: url('../images/left-wave.svg');
+	background-repeat: repeat-y;
+	background-size: 1rem 1rem;
+}
