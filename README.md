@@ -31,8 +31,6 @@ The current version (0.1.0) is usable, but in steady development. Check back lat
 
 Reasonable Footnotes is meant to be a drop-in enhancement to your website footnotes. If everyone is lucky (and your existing markup conforms to expectations) then it should _just work_. Fingers crossed.
 
-<!-- For specifics, please visit the [project website](https://matthewhowell.github.io/reasonable-website). -->
-
 ## Who made this?
 
 A Reasonable Website was created by [Matthew Howell](https://www.matthewhowell.net), a human, trying his best. Like everything in life, it couldn't exist without the help and generosity of others.
