@@ -1,0 +1,142 @@
+a.rfn-link {
+	text-decoration: none;
+	position: relative;
+	padding: 0;
+	/* background-color: var(--color-lighter); */
+}
+
+/* footnote link */
+a.rfn-link:before {
+	content: attr(data-footnote);
+	vertical-align: super;
+	font-size: 50%;
+}
+
+/* open footnote link */
+a.rfn-link.visible:before {
+	/* content: attr(data-footnote) " X"; */
+}
+
+/* footnote content */
+
+/* open footnote content */
+a.rfn-link.visible:after {
+	display: block;
+	opacity: 1;
+	padding: 0.25rem 0.5rem;
+	visibility: visible;
+	height: auto;
+	width: auto;
+	/* transition: visibility 0s, opacity .25s ease; */
+}
+
+/* open footnote content hover/focus state */
+a.rfn-link:hover,
+a.rfn-link:focus {
+	border: none;
+}
+
+.rfn-content.visible:hover {
+	border-color: var(--color-medium);
+}
+
+a.rfn-link.visible:focus {
+	border: none;
+	padding: 0;
+}
+
+a.rfn-link.visible:hover {
+	background-color: none;
+}
+/* todo fix unfocus state */
+
+a.rfn-link:-webkit-direct-focus {
+	outline-color: none;
+	outline-style: none;
+	outline-width: 0px;
+}
+
+.rfn-content {
+	content: attr(data-title);
+	background: #fff;
+	color: #000;
+	font-size: 1rem;
+	cursor: text;
+	display: block;
+	overflow: hidden;
+	/* padding: .25rem .5rem; */
+	/* box-shadow: 2px 2px 4px 0px #DDD; */
+	/* border-radius: 0px; */
+	/* background-color: var(--color-lighter); */
+	/* transition: visibility 0s, opacity .25s ease; */
+	visibility: hidden;
+	display: inline-block;
+	opacity: 0;
+	height: 0;
+	width: 0;
+	overflow: hidden;
+	box-sizing: border-box;
+}
+
+/* relative position */
+.rfn-content.visible {
+	opacity: 1;
+	padding: 0.25rem 0.5rem;
+	visibility: visible;
+	display: block;
+	height: auto;
+	width: auto;
+	border: 1px solid var(--color-light);
+	border-width: 1px;
+	margin-top: -4px;
+}
+
+.rfn-inline-container {
+	display: inline;
+	position: relative;
+}
+
+.rfn-inline-container button {
+	padding: 0.25rem;
+	border-radius: 0;
+}
+
+p {
+	position: relative;
+}
+
+/* absolute position */
+.rfn-content.visible {
+	top: 26px;
+	z-index: 1;
+	position: absolute;
+	width: 20rem;
+
+	/* for footnote labels */
+	/* padding-left: 1.5rem; */
+}
+
+.print-only {
+	visibility: hidden;
+	display: none;
+}
+
+@media print {
+	.no-print {
+		visibility: hidden;
+		display: none;
+	}
+
+	.print-only {
+		visibility: visible;
+		display: block;
+	}
+}
+
+/* footnote label */
+.rfn-label {
+	margin-left: -1.5rem;
+	background-color: var(--color-lighter);
+	padding: 0 1rem;
+	text-align: center;
+}
