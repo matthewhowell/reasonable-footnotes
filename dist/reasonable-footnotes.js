@@ -1,13 +1,22 @@
-/*! reasonable footnotes v0.0.1 | MIT License | https://github.com/matthewhowell/reasonable-footnotes */
+/*! reasonable footnotes v0.1.0 | MIT License | https://github.com/matthewhowell/reasonable-footnotes */
 var reasonable_footnotes = (function () {
+	// public methods and properties
 	let exports = {};
+
+	// private methods and properties
 	let _ = {};
-	_.rfnId = 1;
 
 	exports.version = '0.1.0';
 	exports.config = {
 		debug: false,
 
+		// IMPORTANT
+		// reasonable footnotes begins by identifying all footnotes links in
+		// the document, it does that by searching for any link element
+		// which contains this class
+		// so - either this class needs to be added to your footnote links
+		// or you'll need to override this value with an existing class that
+		// is already applied to your footnote links
 		footnoteLinkClass: 'rfn-a',
 
 		// NOT IMPLEMENTED YET
@@ -38,9 +47,23 @@ var reasonable_footnotes = (function () {
 		return _.rfnId;
 	};
 
+	// reasonable footnotes uuid
+	_.rfnId = 1;
+
+	// increment the rfnid
 	_.incrementRfnId = function () {
 		_.rfnId++;
 		return _.rfnId;
+	};
+
+	// escape key handler to close open footnotes
+	_.escapeKeyHandler = function (event) {
+		event = event || window.event;
+		// if keydown event was triggered by escape key
+		if (event.keyCode == 27) {
+			// close all open inline footnotes
+			closeAllFootnotes();
+		}
 	};
 
 	// returns collection of footnote links
@@ -250,7 +273,6 @@ var reasonable_footnotes = (function () {
 
 			// create button for inline footnotes
 			// buttons are used because because they're natively focusable elements
-
 			const newNoteButton = document.createElement('button');
 			newNoteButton.classList.add('rfn-buttonTEST');
 			newNoteButton.setAttribute('id', 'rfn-button-' + noteNumber);
@@ -313,19 +335,7 @@ var reasonable_footnotes = (function () {
 			newNoteButton.onclick = function (e) {
 				buttonClickHandler(e, this);
 			};
-
-			// add rfn-id to each button
-			// add to data-rfn-id
-			// find and create label
-			// add to data rfn-label
-
-			// create and add buttons
-
-			// create buttons
-			// on click handlers
-			// create spans
-			// calc positions
-		}
+		} // end of loop through footnote links
 
 		// hide each footnote section
 		const footnotesContainer = document.getElementsByClassName('footnotes');
@@ -337,15 +347,8 @@ var reasonable_footnotes = (function () {
 
 		// on escape keydown, close all open footnotes
 		if (exports.config.escapeKeyClosesFootnotes) {
-			document.onkeydown = function (event) {
-				event = event || window.event;
-
-				// if keydown event was triggered by escape key
-				if (event.keyCode == 27) {
-					// close all open inline footnotes
-					closeAllFootnotes();
-				}
-			};
+			// adds event listener to
+			document.addEventListener('keydown', _.escapeKeyHandler);
 		}
 	};
 
@@ -354,4 +357,6 @@ var reasonable_footnotes = (function () {
 
 // ******************************
 // initialize reasonable footnote
+// documentation for available config values can be found
+//
 reasonable_footnotes.init({ debug: true });
