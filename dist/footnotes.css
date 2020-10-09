@@ -12,7 +12,7 @@
 
 /* open footnote content span */
 .rfn-content.visible {
-	background: #ffffff;
+	background: var(--color-lighter);
 	color: var(--color-text);
 	cursor: text;
 	opacity: 1;
@@ -23,7 +23,11 @@
 	width: auto;
 	border: 1px solid var(--color-light);
 	border-width: 1px;
-	margin-top: -4px;
+}
+
+.rfn-content.visible.top {
+	/* align the open footnote content with the bottom of the footnote button */
+	margin-top: -10px;
 
 	/* absolute position */
 	top: 26px;
@@ -32,6 +36,17 @@
 	min-width: 20rem;
 	display: flex;
 	align-items: stretch;
+}
+
+.rfn-content.visible.bottom {
+	/* align the open footnote content with the bottom of the footnote button */
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	padding: 1rem 2rem;
+	z-index: 1;
+	width: 100%;
+	max-width: none;
 }
 
 /* the inline footnote container */
@@ -47,8 +62,11 @@
 .rfn-inline-container button {
 	/* move the button into more footnote-like position */
 	vertical-align: super;
-	padding: 0.125rem 0.25rem;
+	padding: 0.125rem 0.125rem;
 	border-radius: 0;
+
+	/* add space to the right of the footnote button */
+	margin-right: 0.125rem;
 }
 
 /* print-only elements are hidden */

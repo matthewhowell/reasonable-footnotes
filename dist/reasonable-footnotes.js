@@ -10,6 +10,13 @@ var reasonable_footnotes = (function () {
 	exports.config = {
 		debug: false,
 
+		// define where the footnote will be displayed when open
+		// default: top
+		// top: displays the footnote outside of the flow of the text, on top
+		// inline: displays the footnote in the flow of the text, reflow when opened/closed
+		// bottom: displays the footnote at the bottom of the window, static when scrolling
+		display: 'top',
+
 		// IMPORTANT
 		// reasonable footnotes begins by identifying all footnotes links in
 		// the document, it does that by searching for any link element
@@ -41,6 +48,12 @@ var reasonable_footnotes = (function () {
 		// true: creates a <span> element containing the footnote label
 		// false: does not create <span> containing the footnote label
 		showFootnoteLabel: true,
+
+		// hideOriginalFootnotes
+		// default: true
+		// true: removes the original footnotes from the page, still allows printing
+		// false: leaves the original footnotes on the page
+		hideOriginalFootnotes: true,
 	};
 
 	exports.getRfnId = function () {
@@ -163,7 +176,9 @@ var reasonable_footnotes = (function () {
 		}
 
 		// reset inline footnote element width
-		resetElementWidth(element);
+		if (exports.config.display == 'top') {
+			resetElementWidth(element);
+		}
 
 		// remove visible class to hide footnote element
 		element.classList.remove('visible');
@@ -190,8 +205,10 @@ var reasonable_footnotes = (function () {
 		}
 		span.classList.add('visible');
 
-		setElementWidth(span);
-		setFootnotePosition(button, span);
+		if (exports.config.display == 'top') {
+			setElementWidth(span);
+			setFootnotePosition(button, span);
+		}
 
 		// toggle aria-expanded
 		// https://atomiks.github.io/tippyjs/v6/accessibility/
@@ -302,6 +319,7 @@ var reasonable_footnotes = (function () {
 
 			// add id to footnote span element
 			newNoteSpan.setAttribute('id', 'rfn-content-' + noteNumber);
+			newNoteSpan.classList.add(exports.config.display);
 			newNoteSpan.setAttribute('tabindex', '0');
 
 			// create the buttonClickHandler function for each button
@@ -338,11 +356,15 @@ var reasonable_footnotes = (function () {
 		} // end of loop through footnote links
 
 		// hide each footnote section
-		const footnotesContainer = document.getElementsByClassName('footnotes');
-		for (let fnc of footnotesContainer) {
-			// apply print-only class which will allow these to be printed
-			// but hide them from the document
-			fnc.classList.add('print-only');
+		if (exports.config.hideOriginalFootnotes) {
+			const footnotesContainer = document.getElementsByClassName(
+				'footnotes'
+			);
+			for (let fnc of footnotesContainer) {
+				// apply print-only class which will allow these to be printed
+				// but hide them from the document
+				fnc.classList.add('print-only');
+			}
 		}
 
 		// on escape keydown, close all open footnotes
