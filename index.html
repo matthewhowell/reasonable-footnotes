@@ -8,7 +8,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- the development stylesheet -->
+  <!-- website stylesheet -->
   <link rel="stylesheet" href="./styles.css" />
 
   <!-- the footnotes stylesheet -->
@@ -54,14 +54,14 @@
             Footnotes.
           </p>
           <p>
-            Reasonable Footnotes is an accessible<a href="#footnote-1" class="rfn-a">1</a> footnotes implementation, using a minimum<a href="#footnote-2" class="rfn-a">2</a> amount of CSS and JS for a nicer<a href="#footnote-3" class="rfn-a">3</a>experience on the web.
+            Reasonable Footnotes is an accessible<a href="#footnote-1" class="rfn-a">...</a> footnotes implementation, using a minimum<a href="#footnote-2" class="rfn-a">2</a> amount of CSS and JS for a nicer<a href="#footnote-3" class="rfn-a">3</a>experience on the web.
           </p>
         </section>
 	
         <section>
           <h3>Similar Projects</h3>
           <p>
-            For those looking for better footnotes, but who are not convinced <em>Reasonable Footnotes</em>, there are other projects. This is not a new idea and there are other implementations to choose from.
+            For those in the market for better website footnotes, but who are not convinced <em>Reasonable Footnotes</em>, there are other projects that may be more appealing. This is not a new idea, there are other implementations to choose from, some of them are surely better.
           </p>
 		  
 		  <h4>Bigfoot.js</h4>
@@ -79,7 +79,6 @@
 			  <a href="https://www.vojtech.net/posts/hugo-footnotes-popup/">Hugo Footnotes Popup.js</a> is "Pure JavaScript plugin to make your footnotes displayed in a panel."
 		  </p>
         </section>
-			
 
 	      <footer class="footnotes">
 	        <h4>Footnotes</h4>
@@ -123,10 +122,15 @@
 
     <!-- version footer, appears at the top of the page -->
     <footer class="full-width fixed-header version">
-      <code title="Version 0.1.0 is the current stable release"
-        >version 0.1.0</code
-      >
+      <code title="Version 0.1.0 is the current stable release">version 0.1.0</code>
     </footer>
     <script src="./dist/reasonable-footnotes.js"></script>
+	<script>
+		// ******************************
+		// initialize reasonable footnote
+		// documentation for available config values can be found
+		// https://matthewhowell.github.io/reasonable-footnotes/
+		reasonable_footnotes.init({ debug: true, display: 'top', allowMultipleOpenFootnotes: true, footnoteLinkText: 'original'});
+	</script>
   </body>
 </html>

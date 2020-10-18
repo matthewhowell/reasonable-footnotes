@@ -21,21 +21,35 @@
 	display: block;
 	height: auto;
 	width: auto;
-	border: 1px solid var(--color-light);
+	border: 1px solid var(--color-dark);
 	border-width: 1px;
 }
 
 .rfn-content.visible.top {
 	/* align the open footnote content with the bottom of the footnote button */
 	margin-top: -10px;
-
 	/* absolute position */
-	top: 26px;
+	top: 34px;
 	z-index: 1;
 	position: absolute;
 	min-width: 20rem;
 	display: flex;
 	align-items: stretch;
+	/* -webkit-box-shadow: -4px 2px 2px 2px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: -4px 2px 2px 2px rgba(0, 0, 0, 0.25); */
+	box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.25);
+	overflow: visible;
+}
+
+.rfn-content.visible.top > .rfn-arrow {
+	width: 0px;
+	height: 0px;
+	border-left: 8px solid transparent;
+	border-right: 8px solid transparent;
+	border-bottom: 8px solid var(--color-dark);
+	position: absolute;
+	z-index: -1;
+	top: -8px;
 }
 
 .rfn-content.visible.bottom {
@@ -47,6 +61,7 @@
 	z-index: 1;
 	width: 100%;
 	max-width: none;
+	box-shadow: 0px -1px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 /* the inline footnote container */
@@ -67,6 +82,8 @@
 
 	/* add space to the right of the footnote button */
 	margin-right: 0.125rem;
+
+	min-width: 1rem;
 }
 
 /* print-only elements are hidden */
@@ -91,7 +108,7 @@
 /* footnote label */
 .rfn-label {
 	margin-left: -1.5rem;
-	background-color: var(--color-lighter);
+	/* background-color: var(--color-lighter); */
 	padding: 0 1rem;
 	text-align: center;
 }

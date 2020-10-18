@@ -1,18 +1,24 @@
 /*! reasonable footnotes v0.1.0 | MIT License | https://github.com/matthewhowell/reasonable-footnotes */
 var reasonable_footnotes = (function () {
+	// private methods and properties
+	let rfn = {};
+
 	// public methods and properties
 	let exports = {};
-
-	// private methods and properties
-	let _ = {};
-
 	exports.version = '0.1.0';
+
+	// default config settings
+	// each of these values can be overwritten when instantiating reasonable footnotes
+	// by passing an object literal with alternative config values
 	exports.config = {
+		// default: false
+		// false: do not show debug console messages
+		// true: show debug console messages
 		debug: false,
 
 		// define where the footnote will be displayed when open
 		// default: top
-		// top: displays the footnote outside of the flow of the text, on top
+		// top: displays the footnote outside of the flow of the text, sits on top of the page
 		// inline: displays the footnote in the flow of the text, reflow when opened/closed
 		// bottom: displays the footnote at the bottom of the window, static when scrolling
 		display: 'top',
@@ -26,24 +32,38 @@ var reasonable_footnotes = (function () {
 		// is already applied to your footnote links
 		footnoteLinkClass: 'rfn-a',
 
-		// NOT IMPLEMENTED YET
-		// 'footnoteButtonClass': 'rfn-button',
-		// 'footnoteContainerClass': 'rfn-inline-container',
-		// 'footnoteSpanClass': 'rfn-content',
+		// footnoteLinkText
+		// define the text for the footnote link
+		// default: original
+		// original: uses the original link text
+		// number: uses the footnote number as the link text
+		// ellipsis: uses an ellipsis as the link text
+		footnoteLinkText: 'original',
+
+		// IMPORTANT
+		// these classes are applied to some of the footnote markup
+		// feel free to change these, but you'll need to update the provided
+		// CSS rules that use these classes
+		// or if you change these, the default CSS selectors will no longer work
+		footnoteContainerClass: 'rfn-inline-container',
+		footnoteButtonClass: 'rfn-button',
+		footnoteSpanClass: 'rfn-content',
 
 		// escapeKeyClosesFootnotes
 		// default: true
-		// toggle listener for the escape key
-		// on escape key press, all open footnotes will be closed
+		// true: when the escape key is pressed, all open footnotes will be closed
+		// false: when escape key is pressed, no action
 		escapeKeyClosesFootnotes: true,
 
 		// allowMultipleOpenFootnotes
+		// only works for inline or top display, bottom display is always single footnote open
 		// default: false
 		// false: allows multiple footnotes to be in open state
 		// true: allows only a single footnotes to be in the open state
 		allowMultipleOpenFootnotes: false,
 
 		// showFootnoteLabel
+		// add the footnote label into the footnote content
 		// default: true
 		// true: creates a <span> element containing the footnote label
 		// false: does not create <span> containing the footnote label
@@ -56,21 +76,25 @@ var reasonable_footnotes = (function () {
 		hideOriginalFootnotes: true,
 	};
 
+	// return the current internal next rfnId
+	// this can be thought of as the uuid for footnotes within the entire document
 	exports.getRfnId = function () {
-		return _.rfnId;
+		return rfn.rfnId;
 	};
 
-	// reasonable footnotes uuid
-	_.rfnId = 1;
+	// a reasonable beginning footnotes uuid
+	// needs to be an integer
+	rfn.rfnId = 1;
 
 	// increment the rfnid
-	_.incrementRfnId = function () {
-		_.rfnId++;
-		return _.rfnId;
+	// returns the new rfnid
+	rfn.incrementRfnId = function () {
+		rfn.rfnId++;
+		return rfn.rfnId;
 	};
 
 	// escape key handler to close open footnotes
-	_.escapeKeyHandler = function (event) {
+	rfn.escapeKeyHandler = function (event) {
 		event = event || window.event;
 		// if keydown event was triggered by escape key
 		if (event.keyCode == 27) {
@@ -82,20 +106,19 @@ var reasonable_footnotes = (function () {
 	// returns collection of footnote links
 	// this is primary unit that we operate on
 	// assume footnote links to element that will contain the footnote content
-	const getFootnoteLinks = function () {
+	rfn.getFootnoteLinks = function () {
 		return document.getElementsByClassName(
 			exports.config.footnoteLinkClass
 		);
 	};
 
-	const getParagraphElement = function (containerElementId = false) {
-		// if (containerElementId) {
-		// 	// attempt to use the containerElementId
-		// 	const paragraphContainer = document.getElementById(containerElementId);
-		// } else {
+	// returns the first paragraph element in the document
+	// why?
+	// this is used to determine the width of the text flow
+	// top and inline displayed footnotes will inherit this width
+	// and it will be used to position the footnote
+	rfn.getParagraphElement = function () {
 		const paragraphContainer = document.getElementsByTagName('article')[0];
-		// }
-
 		if (paragraphContainer) {
 			const paragraphElement = paragraphContainer.getElementsByTagName(
 				'p'
@@ -103,29 +126,30 @@ var reasonable_footnotes = (function () {
 
 			if (paragraphElement) {
 				return paragraphElement;
-			} else {
-				return false;
 			}
 		}
+		return false;
 	};
 
 	// returns the width of the first <p> element within the <article> element
 	// we use this to calculate the width of popover footnote elements
-	// todo
-	// allow passing of element that will determine width and position
-	const getParagraphWidth = function () {
-		const p = getParagraphElement();
+	rfn.getParagraphWidth = function () {
+		const p = rfn.getParagraphElement();
 		if (p) {
 			return p.clientWidth;
 		}
+		return 0;
 	};
 
-	const getParagraphPosition = function () {
-		const p = getParagraphElement();
-		if (p) {
+	// returns a position object
+	// x: the x position of the element
+	// y: the y position of the element
+	// @element HTML element to find position values
+	const getElementPosition = function (element) {
+		if (element) {
 			let position = {};
-			position.x = p.getBoundingClientRect().x;
-			position.y = p.getBoundingClientRect().y;
+			position.x = Math.round(element.getBoundingClientRect().x);
+			position.y = Math.round(element.getBoundingClientRect().y);
 			return position;
 		}
 		return false;
@@ -136,7 +160,6 @@ var reasonable_footnotes = (function () {
 	// @element HTML element to remove width style declaration
 	const resetElementWidth = function (element) {
 		element.style.width = '0px';
-		// element.removeAttribute('style');
 	};
 
 	// setElementWidth
@@ -144,7 +167,7 @@ var reasonable_footnotes = (function () {
 	// @element HTML element to set width style declaration
 	const setElementWidth = function (element) {
 		// find the paragraph width
-		const currentParagraphWidth = parseInt(getParagraphWidth());
+		const currentParagraphWidth = parseInt(rfn.getParagraphWidth());
 
 		// set the width of the footnote to match the paragraph width
 		if (currentParagraphWidth) {
@@ -160,21 +183,32 @@ var reasonable_footnotes = (function () {
 	// it's used to pull the note to the beginning of the line
 	const setFootnotePosition = function (positionElement, element) {
 		// compute distance from left edge of the screen to left edge of paragraph
-		const paragraphPosition = getParagraphPosition();
+		const paragraphPosition = getElementPosition(rfn.getParagraphElement());
 
-		// compute distance from left edge of the paragraph to the left edge of the footnote button
-		const footnoteX = Math.ceil(positionElement.getBoundingClientRect().x);
+		// compute position of button
+		const buttonPosition = getElementPosition(positionElement);
 
-		footnoteOffset = paragraphPosition.x - footnoteX - 1;
+		// the footnote is a child element of its button
+		// so the footnote must move left to meet the paragraph x position
+		// <p left:2px> <button left:8px> = <footnote left:-6px>
+		footnoteOffset = paragraphPosition.x - buttonPosition.x;
 		element.style.left = footnoteOffset + 'px';
+	};
+
+	// calculate and set the correct left margin for the footnote arrow marker
+	const setArrowPosition = function (positionElement, element) {
+		// compute distance from left edge of the screen to left edge of paragraph
+		const paragraphPosition = getElementPosition(rfn.getParagraphElement());
+
+		// compute position of button
+		const buttonPosition = getElementPosition(positionElement);
+
+		arrowOffset = buttonPosition.x - paragraphPosition.x;
+		element.style.left = arrowOffset + 'px';
 	};
 
 	// close a single footnote element
 	const closeFootnote = function (element) {
-		if (exports.config.debug) {
-			console.log('Close footnote: ' + element.id);
-		}
-
 		// reset inline footnote element width
 		if (exports.config.display == 'top') {
 			resetElementWidth(element);
@@ -187,8 +221,9 @@ var reasonable_footnotes = (function () {
 	// close all open inline footnotes
 	const closeAllFootnotes = function () {
 		// find all open inline footnotes
-		const openFootnotes = document.querySelectorAll('.rfn-content.visible');
-
+		const openFootnotesSelector =
+			'.' + exports.config.footnoteSpanClass + '.visible';
+		const openFootnotes = document.querySelectorAll(openFootnotesSelector);
 		for (let ofn of openFootnotes) {
 			closeFootnote(ofn);
 		}
@@ -200,9 +235,6 @@ var reasonable_footnotes = (function () {
 	};
 
 	const openFootnote = function (span, button) {
-		if (exports.config.debug) {
-			console.log('Open footnote: ' + button.id);
-		}
 		span.classList.add('visible');
 
 		if (exports.config.display == 'top') {
@@ -227,8 +259,15 @@ var reasonable_footnotes = (function () {
 	const addFootnoteElement = function (parentElementId, label, content) {
 		// create new element
 		const newFootnoteContent = document.createElement('span');
-		newFootnoteContent.classList.add('rfn-content');
+		newFootnoteContent.classList.add(exports.config.footnoteSpanClass);
 		newFootnoteContent.setAttribute('id', 'rfn-content-' + label);
+
+		const buttonElement = document.getElementById('rfn-button-' + label);
+		const newFootnoteArrow = document.createElement('span');
+		newFootnoteArrow.classList.add('rfn-arrow');
+		// newFootnoteArrow.style.left = buttonPosition.x + 'px';
+		setArrowPosition(buttonElement, newFootnoteArrow);
+		newFootnoteContent.appendChild(newFootnoteArrow);
 
 		// SETTING
 		// optionally create and insert a <span> containing the footnote label
@@ -252,21 +291,17 @@ var reasonable_footnotes = (function () {
 	};
 
 	// initialize reasonable footnotes
-	// TODO @config {} allows an object literal of config overrides
+	// @config {} allows an object literal of config overrides
 	exports.init = function (config) {
 		// override config settings
 		Object.assign(exports.config, config);
 
 		// find all footnote links
-		const footnoteLinks = getFootnoteLinks();
+		const footnoteLinks = rfn.getFootnoteLinks();
 
 		for (let fnl of footnoteLinks) {
-			if (exports.config.debug) {
-				console.log('Init footnote link: ' + fnl.getAttribute('href'));
-			}
-
 			const noteId = exports.getRfnId();
-			_.incrementRfnId();
+			rfn.incrementRfnId();
 
 			const noteNumber = fnl.getAttribute('href').split('-')[1];
 
@@ -274,11 +309,14 @@ var reasonable_footnotes = (function () {
 			fnl.removeAttribute('href');
 
 			// move the link text, this will be move into the button
+			const originalLinkText = fnl.innerText;
 			fnl.innerText = '';
 
 			// create container for the inline footnote
 			const newNoteContainer = document.createElement('span');
-			newNoteContainer.classList.add('rfn-inline-container');
+			newNoteContainer.classList.add(
+				exports.config.footnoteContainerClass
+			);
 			newNoteContainer.setAttribute(
 				'id',
 				'rfn-inline-container-' + noteNumber
@@ -291,7 +329,7 @@ var reasonable_footnotes = (function () {
 			// create button for inline footnotes
 			// buttons are used because because they're natively focusable elements
 			const newNoteButton = document.createElement('button');
-			newNoteButton.classList.add('rfn-buttonTEST');
+			newNoteButton.classList.add(exports.config.footnoteButtonClass);
 			newNoteButton.setAttribute('id', 'rfn-button-' + noteNumber);
 			newNoteButton.setAttribute(
 				'aria-describedby',
@@ -301,11 +339,18 @@ var reasonable_footnotes = (function () {
 
 			// we explicitly set the tabindex, which ensures keyboard focus and click
 			newNoteButton.setAttribute('tabindex', '0');
-			newNoteButton.innerText = noteNumber;
-			fnl.appendChild(newNoteButton);
 
-			// noteButton.setAttribute("tabindex", "0");
-			//button tabindex="0" aria-expanded="false" id="rfn-button-1" class="rfn-button inline-note"
+			// assume original link text
+			let buttonText = originalLinkText;
+
+			if (exports.config.footnoteLinkText == 'ellipsis') {
+				buttonText = '…';
+			} else if (exports.config.footnoteLinkText == 'number') {
+				buttonText = noteNumber;
+			}
+
+			newNoteButton.innerText = buttonText;
+			fnl.appendChild(newNoteButton);
 
 			const noteContent = document.getElementById(
 				'footnote-content-' + noteNumber
@@ -341,7 +386,10 @@ var reasonable_footnotes = (function () {
 				// OR the clicked note is currently not open
 
 				// optionally, close all other open footnotes
-				if (exports.config.allowMultipleOpenFootnotes === false) {
+				if (
+					exports.config.allowMultipleOpenFootnotes === false ||
+					exports.config.display === 'bottom'
+				) {
 					closeAllFootnotes();
 				}
 
@@ -355,7 +403,7 @@ var reasonable_footnotes = (function () {
 			};
 		} // end of loop through footnote links
 
-		// hide each footnote section
+		// optionally hide each footnote section
 		if (exports.config.hideOriginalFootnotes) {
 			const footnotesContainer = document.getElementsByClassName(
 				'footnotes'
@@ -370,15 +418,26 @@ var reasonable_footnotes = (function () {
 		// on escape keydown, close all open footnotes
 		if (exports.config.escapeKeyClosesFootnotes) {
 			// adds event listener to
-			document.addEventListener('keydown', _.escapeKeyHandler);
+			document.addEventListener('keydown', rfn.escapeKeyHandler);
+		}
+
+		// print some helpful info in the console
+		if (exports.config.debug) {
+			console.log('Reasonable Footnotes initialized.');
+			console.log(
+				'Found and enhanced ' + (rfn.rfnId - 1) + ' footnotes.'
+			);
+			console.log('Display: ' + exports.config.display);
+			console.log(
+				'CSS class for footnote buttons: ' +
+					exports.config.footnoteButtonClass
+			);
+			console.log(
+				'CSS class for footnote content: ' +
+					exports.config.footnoteSpanClass
+			);
 		}
 	};
 
 	return exports;
 })();
-
-// ******************************
-// initialize reasonable footnote
-// documentation for available config values can be found
-//
-reasonable_footnotes.init({ debug: true });
