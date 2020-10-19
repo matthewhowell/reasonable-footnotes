@@ -12,7 +12,8 @@
 
 /* open footnote content span */
 .rfn-content.visible {
-	background: var(--color-lighter);
+	/* background: var(--color-lighter); */
+	background: #fff;
 	color: var(--color-text);
 	cursor: text;
 	opacity: 1;
@@ -21,7 +22,8 @@
 	display: block;
 	height: auto;
 	width: auto;
-	border: 1px solid var(--color-dark);
+	/* border: 1px solid var(--color-dark); */
+	border: 1px solid #aaa;
 	border-width: 1px;
 }
 
@@ -46,7 +48,8 @@
 	height: 0px;
 	border-left: 8px solid transparent;
 	border-right: 8px solid transparent;
-	border-bottom: 8px solid var(--color-dark);
+	/* border-bottom: 8px solid var(--color-dark); */
+	border-bottom: 8px solid #aaa;
 	position: absolute;
 	top: -8px;
 }
@@ -106,8 +109,6 @@
 
 /* footnote label */
 .rfn-label {
-	margin-left: -1.5rem;
-	/* background-color: var(--color-lighter); */
 	padding: 0 1rem;
 	text-align: center;
 }

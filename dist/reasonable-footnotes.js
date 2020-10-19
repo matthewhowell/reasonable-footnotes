@@ -431,7 +431,7 @@ var reasonable_footnotes = (function () {
 		if (exports.config.debug) {
 			console.log('Reasonable Footnotes initialized.');
 			console.log(
-				'Found and enhanced ' + (rfn.rfnId - 1) + ' footnotes.'
+				'Found and transformed ' + (rfn.rfnId - 1) + ' footnotes.'
 			);
 			console.log('Display: ' + exports.config.display);
 			console.log(
