@@ -30,7 +30,7 @@
 	margin-top: -10px;
 	/* absolute position */
 	top: 34px;
-	z-index: 1;
+	z-index: 2;
 	position: absolute;
 	min-width: 20rem;
 	display: flex;
@@ -48,7 +48,6 @@
 	border-right: 8px solid transparent;
 	border-bottom: 8px solid var(--color-dark);
 	position: absolute;
-	z-index: -1;
 	top: -8px;
 }
 

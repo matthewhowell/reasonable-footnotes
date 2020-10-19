@@ -145,7 +145,7 @@ var reasonable_footnotes = (function () {
 	// x: the x position of the element
 	// y: the y position of the element
 	// @element HTML element to find position values
-	const getElementPosition = function (element) {
+	rfn.getElementPosition = function (element) {
 		if (element) {
 			let position = {};
 			position.x = Math.round(element.getBoundingClientRect().x);
@@ -158,14 +158,14 @@ var reasonable_footnotes = (function () {
 	// resetElementWidth
 	// resets the width style declaration to 0px
 	// @element HTML element to remove width style declaration
-	const resetElementWidth = function (element) {
+	rfn.resetElementWidth = function (element) {
 		element.style.width = '0px';
 	};
 
 	// setElementWidth
 	// calculates and sets the width style declaration
 	// @element HTML element to set width style declaration
-	const setElementWidth = function (element) {
+	rfn.setElementWidth = function (element) {
 		// find the paragraph width
 		const currentParagraphWidth = parseInt(rfn.getParagraphWidth());
 
@@ -181,12 +181,14 @@ var reasonable_footnotes = (function () {
 	// calculate and set the correct left margin for the footnote
 	// the left margin will be negative
 	// it's used to pull the note to the beginning of the line
-	const setFootnotePosition = function (positionElement, element) {
+	rfn.setFootnotePosition = function (positionElement, element) {
 		// compute distance from left edge of the screen to left edge of paragraph
-		const paragraphPosition = getElementPosition(rfn.getParagraphElement());
+		const paragraphPosition = rfn.getElementPosition(
+			rfn.getParagraphElement()
+		);
 
 		// compute position of button
-		const buttonPosition = getElementPosition(positionElement);
+		const buttonPosition = rfn.getElementPosition(positionElement);
 
 		// the footnote is a child element of its button
 		// so the footnote must move left to meet the paragraph x position
@@ -196,14 +198,16 @@ var reasonable_footnotes = (function () {
 	};
 
 	// calculate and set the correct left margin for the footnote arrow marker
-	const setArrowPosition = function (positionElement, element) {
+	rfn.setArrowPosition = function (positionElement, element) {
 		// compute distance from left edge of the screen to left edge of paragraph
-		const paragraphPosition = getElementPosition(rfn.getParagraphElement());
+		const paragraphPosition = rfn.getElementPosition(
+			rfn.getParagraphElement()
+		);
 
 		// compute position of button
-		const buttonPosition = getElementPosition(positionElement);
+		const buttonPosition = rfn.getElementPosition(positionElement);
 
-		arrowOffset = buttonPosition.x - paragraphPosition.x;
+		arrowOffset = buttonPosition.x - paragraphPosition.x - 1;
 		element.style.left = arrowOffset + 'px';
 	};
 
@@ -211,8 +215,14 @@ var reasonable_footnotes = (function () {
 	const closeFootnote = function (element) {
 		// reset inline footnote element width
 		if (exports.config.display == 'top') {
-			resetElementWidth(element);
+			rfn.resetElementWidth(element);
 		}
+
+		console.log('here');
+		// update aria-expanded attribute
+		const noteNumber = element.getAttribute('id').split('-')[2];
+		const button = document.getElementById('rfn-button-' + noteNumber);
+		button.setAttribute('aria-expanded', 'false');
 
 		// remove visible class to hide footnote element
 		element.classList.remove('visible');
@@ -238,17 +248,13 @@ var reasonable_footnotes = (function () {
 		span.classList.add('visible');
 
 		if (exports.config.display == 'top') {
-			setElementWidth(span);
-			setFootnotePosition(button, span);
+			rfn.setElementWidth(span);
+			rfn.setFootnotePosition(button, span);
 		}
 
 		// toggle aria-expanded
 		// https://atomiks.github.io/tippyjs/v6/accessibility/
-		if (button.getAttribute('aria-expanded') == 'true') {
-			button.setAttribute('aria-expanded', 'false');
-		} else {
-			button.setAttribute('aria-expanded', 'true');
-		}
+		button.setAttribute('aria-expanded', 'true');
 	};
 
 	// add an element to the DOM
@@ -266,7 +272,7 @@ var reasonable_footnotes = (function () {
 		const newFootnoteArrow = document.createElement('span');
 		newFootnoteArrow.classList.add('rfn-arrow');
 		// newFootnoteArrow.style.left = buttonPosition.x + 'px';
-		setArrowPosition(buttonElement, newFootnoteArrow);
+		rfn.setArrowPosition(buttonElement, newFootnoteArrow);
 		newFootnoteContent.appendChild(newFootnoteArrow);
 
 		// SETTING
