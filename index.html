@@ -1,136 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
-  <title>Reasonable Footnotes</title>
-  <meta
-    name="description"
-    content="Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that transforms standard website footnotes into slightly nicer website footnotes."
-  />
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+	<title>Reasonable Footnotes</title>
+	<meta
+		name="description"
+		content="Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that transforms standard website footnotes into slightly nicer website footnotes."
+	/>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- website stylesheet -->
-  <link rel="stylesheet" href="./styles.css" />
+	<!-- website stylesheet -->
+	<link rel="stylesheet" href="./styles.css" />
 
-  <!-- the footnotes stylesheet -->
-  <link rel="stylesheet" href="./dist/footnotes.css" />
-  <body>
-    <!-- optional, ornamental fixed header at the top of the window -->
-    <div class="full-width fixed-header bg-gradient"></div>
+	<!-- the footnotes stylesheet -->
+	<link rel="stylesheet" href="./dist/footnotes.css" />
+	<body>
+		<!-- optional, ornamental fixed header at the top of the window -->
+		<div class="full-width fixed-header bg-gradient"></div>
 
-    <!-- main element -->
-    <main>
-      <!-- site header -->
-      <header>
-        <h1>Reasonable Footnotes</h1>
-        <p>
-          Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that transforms standard website footnotes into slightly nicer website footnotes.
-        </p>
-      </header>
+		<!-- main element -->
+		<main>
+			<!-- article element -->
+			<article>
+				<!-- site header -->
+				<header>
+					<h1>Reasonable Footnotes</h1>
+					<p>
+						Reasonable Footnotes is a tiny, accessible,
+						progressively-enhanced script that transforms standard
+						website footnotes into <em>slightly nicer</em> website
+						footnotes.
+					</p>
+				</header>
 
-      <!-- article element -->
-      <article>
-        <section>
-          <h2>Why does this exist?</h2>
-          <p>
-            <em>Reasonable Footnotes</em> exists to make website footnotes slightly nicer.
-          </p>
-        </section>
+				<section>
+					<h2>Footnotes Example</h2>
+					<p>
+						This section contains a handful footnotes. In the original markup, these footnotes are anchor elements that will scroll the browser down to the footnotes section. This behavior has been altered by Reasonable Footnotes and now the footnotes will be displayed in-place.
+					</p>
+					<p>
+						Here is a footnote that uses an ellipsis <a href="#footnote-1" class="rfn-a">…</a> as its link text. Here's another that uses the footnote's id<a href="#footnote-2" class="rfn-a">2</a>. This third footnote<a href="#footnote-3" class="rfn-a">3</a> contains lots of content that will be scrollable when opened.
+					</p>
+					<p>Footnotes can be keyboard focused and closed by pressing the <kbd>esc</kbd> key.</p>
+				</section>
 
-        <section>
-          <h3>Can I use this?</h3>
-          <p>
-            <em>Reasonable Footnotes</em> is free software. The <a href="https://github.com/matthewhowell/reasonable-footnotes">full, annotated source code</a>is available, and it is released here under the <a href="https://choosealicense.com/licenses/mit/">MIT License</a>.
-          </p>
-          <p>
-            The current version (0.1.0) is usable, but in steady development and
-            not for the faint of heart or the wary of bugs.
-          </p>
-        </section>
-		
-        <section>
-          <h2>Footnotes Example</h2>
-          <p>
-            This example template exists for development work on Reasonable
-            Footnotes.
-          </p>
-          <p>
-            Reasonable Footnotes is an accessible<a href="#footnote-1" class="rfn-a">...</a> footnotes implementation, using a minimum<a href="#footnote-2" class="rfn-a">2</a> amount of CSS and JS for a nicer<a href="#footnote-3" class="rfn-a">3</a>experience on the web.
-          </p>
-        </section>
-	
-        <section>
-          <h3>Similar Projects</h3>
-          <p>
-            For those in the market for better website footnotes, but who are not convinced <em>Reasonable Footnotes</em>, there are other projects that may be more appealing. This is not a new idea, there are other implementations to choose from, some of them are surely better.
-          </p>
-		  
-		  <h4>Bigfoot.js</h4>
-		  <p>
-			  <a href="http://www.bigfootjs.com">Bigfoot.js</a> is "a jQuery plugin for creating exceptional footnotes."
-		  </p>
-		  
-		  <h4>Littlefoot.js</h4>
-		  <p>
-			  <a href="https://goblindegook.github.io/littlefoot/">littlefoot.js</a> is "a lightweight JavaScript library that creates exceptional footnotes."
-		  </p>
-		  
-		  <h4>Hugo Footnotes Popup.js</h4>
-		  <p>
-			  <a href="https://www.vojtech.net/posts/hugo-footnotes-popup/">Hugo Footnotes Popup.js</a> is "Pure JavaScript plugin to make your footnotes displayed in a panel."
-		  </p>
-        </section>
+				<section>
+					<h3>Can I use this?</h3>
+					<p>
+						<em>Reasonable Footnotes</em> is free software. The
+						<a
+							href="https://github.com/matthewhowell/reasonable-footnotes"
+							>full, annotated source code</a
+						>is available, and it is released here under the
+						<a href="https://choosealicense.com/licenses/mit/"
+							>MIT License</a
+						>.
+					</p>
+					<p>
+						The current version (0.2.0) is usable, but in steady
+						development and not for the faint of heart or the wary
+						of bugs.
+					</p>
+				</section>
 
-	      <footer class="footnotes">
-	        <h4>Footnotes</h4>
-	
-	        <dl>
-	          <dt id="footnote-1">1 <a href="#footnote-location-1">↑</a></dt>
-	          <dd id="footnote-content-1">
-	            The footnote buttons are able to be focused and clicked with
-	            keyboard. The footnotes remains selectable text.
-	          </dd>
-	
-	          <dt id="footnote-2">2</dt>
-	          <dd id="footnote-content-2">
-	            Reasonable Footnotes is about 3KB of zero-dependency JavaScript.
-	          </dd>
-	
-	          <dt id="footnote-3">3</dt>
-	          <dd id="footnote-content-3">Slightly!</dd>
-	        </dl>
-	      </footer>
-      </article>
+				<section>
+					<h3>Similar Projects</h3>
+					<p>
+						For those in the market for better website footnotes,
+						but who are not convinced <em>Reasonable Footnotes</em>,
+						there are other projects that may be more appealing.
+						This is not a new idea, there are other implementations
+						to choose from, some of them are surely better.
+					</p>
 
-      <div class="full-width neutral mb-0">
-        <footer>
-          <p>
-            Reasonable Footnotes is a piece of <em>Reasonable Work</em>, a small
-            collection of utterly reasonable pieces of technology
-            and<em>–sometimes–</em>other things.
-          </p>
-          <p>
-            It was created in 2020 by
-            <a href="https://www.matthewhowell.net">Matthew Howell</a>, with an
-            unbelievable amount of help from others.
-          </p>
-          <p>
-            <mark>May we all–<em>forever</em>–be the publishers of our own hypertext.</mark>
-          </p>
-        </footer>
-      </div>
-    </main>
+					<h4>Bigfoot.js</h4>
+					<p>
+						<a href="http://www.bigfootjs.com">Bigfoot.js</a> is "a
+						jQuery plugin for creating exceptional footnotes."
+					</p>
 
-    <!-- version footer, appears at the top of the page -->
-    <footer class="full-width fixed-header version">
-      <code title="Version 0.1.0 is the current stable release">version 0.1.0</code>
-    </footer>
-    <script src="./dist/reasonable-footnotes.js"></script>
-	<script>
-		// ******************************
-		// initialize reasonable footnote
-		// documentation for available config values can be found
-		// https://matthewhowell.github.io/reasonable-footnotes/
-		reasonable_footnotes.init({ debug: true, display: 'top', showFootnoteLabel: false, footnoteLinkText: 'original'});
-	</script>
-  </body>
+					<h4>Littlefoot.js</h4>
+					<p>
+						<a href="https://goblindegook.github.io/littlefoot/"
+							>littlefoot.js</a
+						>
+						is "a lightweight JavaScript library that creates
+						exceptional footnotes."
+					</p>
+
+					<h4>Hugo Footnotes Popup.js</h4>
+					<p>
+						<a
+							href="https://www.vojtech.net/posts/hugo-footnotes-popup/"
+							>Hugo Footnotes Popup.js</a
+						>
+						is "Pure JavaScript plugin to make your footnotes
+						displayed in a panel."
+					</p>
+				</section>
+
+				<footer class="footnotes">
+					<h4>Footnotes</h4>
+
+					<dl>
+						<dt id="footnote-1">
+							1 <a href="#footnote-location-1">↑</a>
+						</dt>
+						<dd id="footnote-content-1">
+							The footnote buttons are able to be focused and clicked with keyboard. The footnotes remains selectable text. And can include <strong>markup</strong> as needed.
+						</dd>
+
+						<dt id="footnote-2">2</dt>
+						<dd id="footnote-content-2">
+							Reasonable Footnotes is about 4KB of zero-dependency JavaScript.
+						</dd>
+
+						<dt id="footnote-3">3</dt>
+						<dd id="footnote-content-3">Longer footnotes will expand the footnote container vertically, but will not scroll.</dd>
+					</dl>
+				</footer>
+			</article>
+
+			<div class="full-width neutral mb-0">
+				<footer>
+					<p>
+						Reasonable Footnotes is a piece of
+						<em>Reasonable Work</em>, a small collection of utterly
+						reasonable pieces of technology
+						and<em>–sometimes–</em>other things.
+					</p>
+					<p>
+						It was created in 2020 by
+						<a href="https://www.matthewhowell.net"
+							>Matthew Howell</a
+						>, with an unbelievable amount of help from others.
+					</p>
+					<p>
+						<mark
+							>May we all–<em>forever</em>–be the publishers of
+							our own hypertext.</mark
+						>
+					</p>
+				</footer>
+			</div>
+		</main>
+
+		<!-- version footer, appears at the top of the page -->
+		<footer class="full-width fixed-header version">
+			<code title="Version 0.2.0 is the current stable release"
+				>version 0.2.0</code
+			>
+		</footer>
+		<script src="./dist/reasonable-footnotes.js"></script>
+		<script>
+			// ******************************
+			// initialize reasonable footnote
+			// documentation for available config values can be found
+			// https://matthewhowell.github.io/reasonable-footnotes/
+			reasonable_footnotes.init({
+				debug: true,
+				display: 'top',
+				showFootnoteLabel: false,
+				footnoteLinkText: 'original',
+			});
+		</script>
+	</body>
 </html>
