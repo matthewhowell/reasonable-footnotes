@@ -265,6 +265,10 @@ var reasonable_footnotes = (function () {
 	const addFootnoteElement = function (parentElementId, label, content) {
 		// create new element
 		const newFootnoteContent = document.createElement('span');
+
+		// use markup from original footnote
+		newFootnoteContent.innerHTML = content;
+
 		newFootnoteContent.classList.add(exports.config.footnoteSpanClass);
 		newFootnoteContent.setAttribute('id', 'rfn-content-' + label);
 
@@ -283,8 +287,6 @@ var reasonable_footnotes = (function () {
 			newFootnoteLabel.classList.add('rfn-label');
 			newFootnoteContent.appendChild(newFootnoteLabel);
 		}
-
-		newFootnoteContent.appendChild(document.createTextNode(content));
 
 		const parentElement = document.getElementById(parentElementId);
 
@@ -365,7 +367,7 @@ var reasonable_footnotes = (function () {
 			const newNoteSpan = addFootnoteElement(
 				'rfn-inline-container-' + noteNumber,
 				noteNumber,
-				noteContent.innerText
+				noteContent.innerHTML
 			);
 
 			// add id to footnote span element
