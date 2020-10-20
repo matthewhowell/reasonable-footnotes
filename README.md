@@ -1,6 +1,6 @@
 # Reasonable Footnotes
 
-Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that that _anyone can use_ to transform standard website footnotes into slightly nicer website footnotes.
+Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that that _anyone can use_ to transform standard website footnotes into _slightly nicer_ website footnotes.
 
 ## Table of contents
 
@@ -11,26 +11,38 @@ Reasonable Footnotes is a tiny, accessible, progressively-enhanced script that t
 
 ## Why does this exist?
 
-Reasonable Footnotes exists to make website footnotes slightly nicer.
+Reasonable Footnotes exists to make website footnotes _slightly_ nicer.
 
-Footnotes are useful and benefit from an enhanced user experience. The most common implementation of HTML footnotes involves an anchor element that links to a location farther down the page which displays the actual note. Then, that note needs another anchor element to link back to the location of the original footnote link.
+Footnotes are useful in many kinds of writing. The most common implementation of footnotes on websites involves anchor elements jumping the reader around the document.
 
 Footnotes should be easier to read.
 
-Reasonable Footnotes keeps the inline anchor links, but instead of jumping the user around the page, the footnotes are displayed inline.
+Reasonable Footnotes is attempts to improve on this experience by allowing the reader to read the footnotes in-place.
 
-This is not a new idea. Reasonable Footnotes is an attempt at a minimum, reasonable implementation of inline footnotes.
+This is not a new idea (see: similar projects). Reasonable Footnotes is an attempt at a minimum, reasonable implementation of in-place readable footnotes.
 
 ## Can I use this?
 
 Reasonable Footnotes is free software. The full, annotated source code is available, and it is released here under the MIT License.
 
-The current version (0.1.0) is usable, but in steady development. Check back later for a more stable release.
+The current version (0.2.0) is usable, but in steady development. Check back later for a more stable release.
 
 ## How might I use this?
 
-Reasonable Footnotes is meant to be a drop-in enhancement to your website footnotes. If everyone is lucky (and your existing markup conforms to expectations) then it should _just work_. Fingers crossed.
+Reasonable Footnotes is meant to be a drop-in enhancement to your website footnotes. If everyone is lucky (and your existing markup conforms to some reasonable expectations) then it should _just work_. Fingers crossed.
 
 ## Who made this?
 
 A Reasonable Website was created by [Matthew Howell](https://www.matthewhowell.net), a human, trying his best. Like everything in life, it couldn't exist without the help and generosity of others.
+
+## Similar Projects
+For those in the market for better website footnotes, but who are unimpressed with <em>Reasonable Footnotes</em>, there are other projects that may be more appealing. This is not a new idea, there are other implementations to choose from, some of them are surely better.
+
+### Bigfoot.js
+<a href="http://www.bigfootjs.com">Bigfoot.js</a> is "a jQuery plugin for creating exceptional footnotes."
+
+### Littlefoot.js
+<a href="https://goblindegook.github.io/littlefoot/">littlefoot.js</a> is "a lightweight JavaScript library that creates exceptional footnotes."
+
+### Hugo Footnotes Popup.js
+<a href="https://www.vojtech.net/posts/hugo-footnotes-popup/">Hugo Footnotes Popup.js</a> is "Pure JavaScript plugin to make your footnotes displayed in a panel."

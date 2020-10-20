@@ -1,11 +1,11 @@
-/*! reasonable footnotes v0.1.0 | MIT License | https://github.com/matthewhowell/reasonable-footnotes */
+/*! reasonable footnotes v0.2.0 | MIT License | https://github.com/matthewhowell/reasonable-footnotes */
 var reasonable_footnotes = (function () {
 	// private methods and properties
 	let rfn = {};
 
 	// public methods and properties
 	let exports = {};
-	exports.version = '0.1.0';
+	exports.version = '0.2.0';
 
 	// default config settings
 	// each of these values can be overwritten when instantiating reasonable footnotes
