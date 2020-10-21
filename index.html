@@ -27,18 +27,26 @@
 					<p>
 						Reasonable Footnotes is a tiny, accessible,
 						progressively-enhanced script that transforms standard
-						website footnotes into <em>slightly nicer</em> website
+						website footnotes<a id="footnote-location-1" href="#footnote-1" class="rfn-a">1</a> into <em>slightly nicer</em> website
 						footnotes.
 					</p>
 				</header>
 
 				<section>
-					<h2>Footnotes Example</h2>
+					<h2>Why does this exist?</h2>
+					<p>Reasonable Footnotes exists to make website footnotes <em>slightly</em> nicer.</p>
+					<p>Footnotes are useful in many kinds of writing. The most common implementation of footnotes on websites involves anchor elements jumping the reader around the document.</p>
+					<p>Footnotes should be easier to read.</p>
+					<p>Reasonable Footnotes is attempts to improve on this experience by allowing the reader to read the footnotes in-place.</p>
+					<p>This is not a new idea (see: similar projects). Reasonable Footnotes is an attempt at a minimum, reasonable implementation of in-place readable footnotes.</p>
+				</section>
+				
+				<section>
+					<h3>Examples</h3>
 					<p>
 						This section contains a handful footnotes. In the original markup, these footnotes are anchor elements that will scroll the browser down to the footnotes section. This behavior has been altered by Reasonable Footnotes and now the footnotes will be displayed in-place.
 					</p>
-					<p>
-						Here is a footnote that uses an ellipsis <a href="#footnote-1" class="rfn-a">…</a> as its link text. Here's another that uses the footnote's id<a href="#footnote-2" class="rfn-a">2</a>. This third footnote<a href="#footnote-3" class="rfn-a">3</a> contains lots of content that will be scrollable when opened.
+					<p>Here is a footnote that uses an ellipsis <a id="footnote-location-2" href="#footnote-2" class="rfn-a">…</a> as its link text. Here's another that uses the footnote's id<a id="footnote-location-3" href="#footnote-3" class="rfn-a">3</a>. This next footnote<a id="footnote-location-4" href="#footnote-4" class="rfn-a">4</a> contains lots of content that will be scrollable when opened.
 					</p>
 					<p>Footnotes can be keyboard focused and closed by pressing the <kbd>esc</kbd> key.</p>
 				</section>
@@ -47,19 +55,21 @@
 					<h3>Can I use this?</h3>
 					<p>
 						<em>Reasonable Footnotes</em> is free software. The
-						<a
-							href="https://github.com/matthewhowell/reasonable-footnotes"
-							>full, annotated source code</a
-						>is available, and it is released here under the
-						<a href="https://choosealicense.com/licenses/mit/"
-							>MIT License</a
-						>.
+						<a href="https://github.com/matthewhowell/reasonable-footnotes">full, annotated source code</a> is available, and it is released here under the <a href="https://choosealicense.com/licenses/mit/">MIT License</a>.
 					</p>
 					<p>
-						The current version (0.2.0) is usable, but in steady
-						development and not for the faint of heart or the wary
-						of bugs.
+						The current version (0.2.0) is usable, but in steady development and not for the faint of heart or the wary of bugs.
 					</p>
+				</section>
+
+				<section>
+					<h3>How might I use this?</h3>
+					<p>Reasonable Footnotes is meant to be a drop-in enhancement to your website footnotes. If everyone is lucky (and your existing markup conforms to some reasonable expectations) then it should _just work_. Fingers crossed.</p>
+				</section>
+
+				<section>
+					<h3>Who made this?</h3>
+					<p>A Reasonable Website was created by [Matthew Howell](https://www.matthewhowell.net), a human, trying his best. Like everything in life, it couldn't exist without the help and generosity of others.</p>
 				</section>
 
 				<section>
@@ -80,21 +90,12 @@
 
 					<h4>Littlefoot.js</h4>
 					<p>
-						<a href="https://goblindegook.github.io/littlefoot/"
-							>littlefoot.js</a
-						>
-						is "a lightweight JavaScript library that creates
-						exceptional footnotes."
+						<a href="https://goblindegook.github.io/littlefoot/">littlefoot.js</a> is "a lightweigh JavaScript library that creates exceptional footnotes."
 					</p>
 
 					<h4>Hugo Footnotes Popup.js</h4>
 					<p>
-						<a
-							href="https://www.vojtech.net/posts/hugo-footnotes-popup/"
-							>Hugo Footnotes Popup.js</a
-						>
-						is "Pure JavaScript plugin to make your footnotes
-						displayed in a panel."
+						<a href="https://www.vojtech.net/posts/hugo-footnotes-popup/">Hugo Footnotes Popup.js</a> is "Pure JavaScript plugin to make your footnotes displayed in a panel."
 					</p>
 				</section>
 
@@ -102,20 +103,29 @@
 					<h4>Footnotes</h4>
 
 					<dl>
-						<dt id="footnote-1">
-							1 <a href="#footnote-location-1">↑</a>
-						</dt>
+						<dt id="footnote-1">1</dt>
 						<dd id="footnote-content-1">
-							The footnote buttons are able to be focused and clicked with keyboard. The footnotes remains selectable text. And can include <strong>markup</strong> as needed.
+							Like this one.
+							<a href="#footnote-location-1">↩︎︎</a>
 						</dd>
 
 						<dt id="footnote-2">2</dt>
 						<dd id="footnote-content-2">
-							Reasonable Footnotes is about 4KB of zero-dependency JavaScript.
+							The footnote buttons are able to be focused and clicked with keyboard. The footnotes remains selectable text. And can include <strong>markup</strong> as needed.
+							<a href="#footnote-location-2">↩︎︎</a>
 						</dd>
 
 						<dt id="footnote-3">3</dt>
-						<dd id="footnote-content-3">Longer footnotes will expand the footnote container vertically, but will not scroll.</dd>
+						<dd id="footnote-content-3">
+							Reasonable Footnotes is about 4KB of zero-dependency JavaScript.
+							<a href="#footnote-location-3">↩︎︎</a>
+						</dd>
+						
+						<dt id="footnote-4">4</dt>
+						<dd id="footnote-content-4">
+							Longer footnotes will expand the footnote container vertically, but will not scroll.
+							<a href="#footnote-location-4">↩︎︎</a>
+						</dd>
 					</dl>
 				</footer>
 			</article>
@@ -156,12 +166,12 @@
 			// initialize reasonable footnote
 			// documentation for available config values can be found
 			// https://matthewhowell.github.io/reasonable-footnotes/
-			reasonable_footnotes.init({
-				debug: true,
-				display: 'top',
-				showFootnoteLabel: false,
-				footnoteLinkText: 'original',
-			});
+			// reasonable_footnotes.init({
+			// 	debug: true,
+			// 	display: 'top',
+			// 	showFootnoteLabel: false,
+			// 	footnoteLinkText: 'original',
+			// });
 		</script>
 	</body>
 </html>
