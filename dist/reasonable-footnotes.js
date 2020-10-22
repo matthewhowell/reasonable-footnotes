@@ -218,7 +218,6 @@ var reasonable_footnotes = (function () {
 			rfn.resetElementWidth(element);
 		}
 
-		console.log('here');
 		// update aria-expanded attribute
 		const noteNumber = element.getAttribute('id').split('-')[2];
 		const button = document.getElementById('rfn-button-' + noteNumber);
@@ -306,6 +305,26 @@ var reasonable_footnotes = (function () {
 
 		// find all footnote links
 		const footnoteLinks = rfn.getFootnoteLinks();
+
+		const footnotesContainer = document.getElementsByClassName('footnotes');
+
+		// loop through the footnote containers on the page
+		for (let fnc of footnotesContainer) {
+			const footnoteLocationLinks = fnc.querySelectorAll(
+				'a.footnote-location'
+			);
+			// each footnote location link
+			for (let fnll of footnoteLocationLinks) {
+				fnll.remove();
+			}
+
+			// optionally hide each footnote section
+			// apply print-only class which will allow these to be printed
+			// but hide them from the document
+			if (exports.config.hideOriginalFootnotes) {
+				fnc.classList.add('print-only');
+			}
+		}
 
 		for (let fnl of footnoteLinks) {
 			const noteId = exports.getRfnId();
@@ -410,18 +429,6 @@ var reasonable_footnotes = (function () {
 				buttonClickHandler(e, this);
 			};
 		} // end of loop through footnote links
-
-		// optionally hide each footnote section
-		if (exports.config.hideOriginalFootnotes) {
-			const footnotesContainer = document.getElementsByClassName(
-				'footnotes'
-			);
-			for (let fnc of footnotesContainer) {
-				// apply print-only class which will allow these to be printed
-				// but hide them from the document
-				fnc.classList.add('print-only');
-			}
-		}
 
 		// on escape keydown, close all open footnotes
 		if (exports.config.escapeKeyClosesFootnotes) {
